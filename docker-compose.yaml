@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  sqiud:
+    image: squid:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: squid
+    volumes:
+      - $PWD/etc:/etc/squid
+      - $PWD/log:/var/log/squid
+      - $PWD/data:/var/spool/squid
+    ports:
+      - "3128:3128"
+    restart: always
